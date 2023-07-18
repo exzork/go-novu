@@ -234,7 +234,7 @@ func (s *SubscriberService) UpdateSubscriptionCredentials(ctx context.Context, s
 		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodPatch, URL.String(), bytes.NewBuffer(jsonBody))
+	req, err := http.NewRequestWithContext(ctx, http.MethodPut, URL.String(), bytes.NewBuffer(jsonBody))
 	if err != nil {
 		return nil, err
 	}
