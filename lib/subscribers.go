@@ -225,4 +225,26 @@ func (s *SubscriberService) MarkMessageSeen(ctx context.Context, subscriberID st
 	return &resp, nil
 }
 
+func (s *SubscriberService) UpdateSubscriptionCredentials(ctx context.Context, subscriberID string, opts UpdateSubscriptionCredentialsOptions) (*SubscriberResponse, error) {
+	var resp SubscriberResponse
+	URL := s.client.config.BackendURL.JoinPath("subscribers", subscriberID, "credentials")
+
+	jsonBody, err := json.Marshal(opts)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodPatch, URL.String(), bytes.NewBuffer(jsonBody))
+	if err != nil {
+		return nil, err
+	}
+
+	_, err = s.client.sendRequest(req, &resp)
+	if err != nil {
+		return nil, err
+	}
+
+	return &resp, nil
+}
+
 var _ ISubscribers = &SubscriberService{}

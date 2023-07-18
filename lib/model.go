@@ -325,3 +325,8 @@ type BroadcastEventToAll struct {
 	TransactionId string      `json:"transactionId,omitempty"`
 	Actor         interface{} `json:"actor,omitempty"`
 }
+
+type UpdateSubscriptionCredentialsOptions struct {
+	ProviderID  string      `json:"providerId"`
+	Credentials interface{} `json:"credentials"`
+}
