@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/novuhq/go-novu/lib"
+	"github.com/exzork/go-novu/lib"
 	"github.com/stretchr/testify/require"
 
 	"github.com/stretchr/testify/assert"
